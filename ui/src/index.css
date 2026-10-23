@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.875rem;
+  --background: #141414;
+  --foreground: #ececec;
+  --card: #1b1b1b;
+  --card-foreground: #ececec;
+  --popover: #262626;
+  --popover-foreground: #ececec;
+  --primary: #f5c518;
+  --primary-foreground: #141414;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ececec;
+  --muted: #222222;
+  --muted-foreground: #9a9a9a;
+  --accent: #2a2a2a;
+  --accent-foreground: #ffffff;
+  --destructive: #f85149;
+  --border: rgb(255 255 255 / 0.07);
+  --input: rgb(255 255 255 / 0.09);
+  --ring: #f5c518;
+  --good: #3fb950;
+  --warn: #d29922;
+  --quiet: #707070;
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-quiet: var(--quiet);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html, body, #root { height: 100%; }
+  body { @apply bg-background text-foreground font-sans antialiased; font-size: 14px; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 6px; }
+  ::selection { background: rgb(245 197 24 / 0.3); }
+}

@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro'
+import data from '../../data/site.json'
+---
+<Base title="Answers to real questions" description="Short, practical answers to real questions people asked.">
+  <h1 class="text-4xl font-semibold tracking-tight">Answers</h1>
+  <p class="mt-5 max-w-xl leading-relaxed text-soft">Real questions people asked, each with a short answer you can act on today.</p>
+  <div class="mt-10 grid gap-2">
+    {data.answers.length === 0 && <p class="text-quiet">The first answers are being written.</p>}
+    {data.answers.map(a => <a href={`/answers/${a.slug}`} class="rounded-2xl border border-line bg-surface px-6 py-4 hover:bg-raised">{a.title}</a>)}
+  </div>
+</Base>

@@ -1,0 +1,62 @@
+name: Bug report
+description: Something does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please do not report security vulnerabilities here; see SECURITY.md.
+        Remove tokens, handles of other people and the contents of your brain before pasting logs.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Setup (Claude Code check, questions, review)
+        - Listening (Reddit, Hacker News, Bluesky, GitHub)
+        - Scoring and drafts
+        - Inbox, people and signals
+        - Problem board and weekly reports
+        - Chat on the screen
+        - Telegram
+        - Connections
+        - Public site
+        - Install and startup
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the screen ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v0.1.0 or a commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version (`node --version`), Claude Code version (`claude --version`).
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: The lines around the problem in `data/service.log`, or what the job printed when run by hand (`npm run listen`, `npm run think`).
+      render: text

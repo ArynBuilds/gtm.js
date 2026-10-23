@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro'
+import data from '../data/site.json'
+const top = data.report.themes.slice(0, 3)
+const product = data.product ?? {}
+const note = { building: 'Not released yet. Being built in the open.', beta: 'In early access.' }[product.stage]
+---
+<Base title={`${product.name}: ${product.line}`} description={product.line}>
+  {note && <p class="text-sm text-gold">{note}</p>}
+  <h1 class="mt-4 text-5xl font-semibold leading-[1.05] tracking-tight">{product.line}</h1>
+  <div class="mt-8 flex flex-wrap gap-3 text-sm">
+    {product.url && product.stage !== 'building' && <a href={product.url} class="rounded-full bg-gold px-5 py-2.5 font-medium text-ground">Try {product.name}</a>}
+    <a href="/problems" class="rounded-full bg-raised px-5 py-2.5">See what people struggle with</a>
+  </div>
+
+  <h2 class="mt-24 text-sm font-semibold text-soft">Why it exists</h2>
+  <p class="mt-3 max-w-xl leading-relaxed">
+    I read what people post every day about what goes wrong. Out of {data.report.posts} posts so far,
+    these come up most.
+  </p>
+  <div class="mt-6 grid gap-3">
+    {top.map(t => (
+      <a href="/problems" class="flex items-baseline gap-5 rounded-2xl border border-line bg-surface px-6 py-5 hover:bg-raised">
+        <span class="w-8 text-right text-2xl font-semibold tabular-nums">{t.seen}</span>
+        <span><span class="block font-medium first-letter:uppercase">{t.name}</span><span class="mt-1 block text-sm text-soft">{t.summary}</span></span>
+      </a>
+    ))}
+  </div>
+</Base>

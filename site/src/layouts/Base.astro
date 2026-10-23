@@ -1,0 +1,42 @@
+---
+import '../styles.css'
+import data from '../data/site.json'
+const { title, description } = Astro.props
+const here = Astro.url.pathname
+const links = [['/problems', 'What breaks'], ['/answers', 'Answers']]
+const product = data.product ?? {}
+const me = product.me ?? {}
+// Where the founder can be followed, from the accounts given in the setup.
+const follow = [
+  me.bluesky && ['Bluesky', `https://bsky.app/profile/${me.bluesky}`],
+  me.github && ['GitHub', `https://github.com/${me.github}`],
+].filter(Boolean)
+const stage = { building: 'It is not released yet.', beta: 'It is in early access.' }[product.stage] ?? ''
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body class="min-h-screen">
+    <header class="mx-auto flex max-w-3xl items-center gap-6 px-6 py-6">
+      <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
+        <span class="grid size-7 place-items-center rounded-lg bg-gold text-sm text-ground">{(product.name ?? '?')[0].toLowerCase()}</span> {product.name}
+      </a>
+      <nav class="ml-auto flex gap-5 text-sm">
+        {links.map(([to, name]) => <a href={to} class={here.startsWith(to) ? 'text-ink' : 'text-soft hover:text-ink'}>{name}</a>)}
+      </nav>
+    </header>
+    <main class="mx-auto max-w-3xl px-6 pb-24 pt-10"><slot /></main>
+    <footer class="mx-auto max-w-3xl border-t border-line px-6 py-8 text-sm text-quiet">
+      {product.name}: {product.line} {stage}
+      {product.founder && <>Made by {product.founder}.</>}
+      {follow.map(([name, url], i) => <>{i ? ', ' : ' '}<a class="text-soft hover:text-ink" href={url}>{name}</a></>)}{follow.length ? '.' : ''}
+    </footer>
+  </body>
+</html>

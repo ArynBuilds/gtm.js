@@ -1,0 +1,11 @@
+# Your workspace: settings, brain, secrets and everything heard. Never published.
+data/
+node_modules/
+ui/dist/
+site/dist/
+site/.astro/
+# Written by gtm.js from your workspace, for your public site.
+site/src/data/
+
+# archify working files
+/.archify/

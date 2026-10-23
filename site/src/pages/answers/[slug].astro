@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro'
+import data from '../../data/site.json'
+export function getStaticPaths() {
+  return data.answers.map(a => ({ params: { slug: a.slug }, props: { a } }))
+}
+const { a } = Astro.props
+---
+<Base title={a.title} description={a.body.slice(0, 150)}>
+  <a href="/answers" class="text-sm text-soft hover:text-ink">All answers</a>
+  <h1 class="mt-4 text-3xl font-semibold leading-tight tracking-tight">{a.title}</h1>
+  <div class="mt-8 max-w-2xl space-y-5 text-[17px] leading-relaxed">
+    {a.body.split(/\n\s*\n/).map(p => <p>{p}</p>)}
+  </div>
+</Base>

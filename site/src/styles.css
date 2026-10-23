@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+
+@theme {
+  --font-sans: "Geist Variable", Inter, system-ui, sans-serif;
+  --color-ground: #141414;
+  --color-surface: #1b1b1b;
+  --color-raised: #2a2a2a;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-ink: #ececec;
+  --color-soft: #9a9a9a;
+  --color-quiet: #707070;
+  --color-gold: #f5c518;
+}
+
+html { background: var(--color-ground); color: var(--color-ink); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: rgb(245 197 24 / 0.3); }

@@ -1,0 +1,23 @@
+{
+  "name": "gtm.js",
+  "description": "A go-to-market agent that runs on your computer, on your own Claude Code.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "npm --prefix ui ci && npm --prefix ui run build",
+    "start": "node --no-warnings src/keep.mjs",
+    "check": "node --no-warnings scripts/check.mjs && npm --prefix ui run check",
+    "listen": "node --no-warnings src/listen.mjs",
+    "think": "node --no-warnings src/think.mjs",
+    "content": "node --no-warnings src/content.mjs",
+    "plan": "node --no-warnings src/plan.mjs",
+    "learn": "node --no-warnings src/learn.mjs",
+    "weekly": "node --no-warnings src/weekly/answers.mjs && node --no-warnings src/weekly/rivals.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.1"
+  }
+}
