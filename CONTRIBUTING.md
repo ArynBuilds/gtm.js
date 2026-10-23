@@ -72,7 +72,6 @@ It loads every module of the service in a throwaway workspace and typechecks the
 - **A job owns its tables.** A job creates the tables it needs with `create table if not exists` at the top of its file, and can run by itself (`if (isMain(import.meta.url))`).
 - **Every job says what it did.** One `note(job, text)` line per run, in plain words with the numbers; that line is what the screen and Telegram show.
 - **The screen uses the tokens.** Colors come from `ui/src/index.css`; no raw colors in components.
-- **Files stay small and do one thing.** Split a file before it passes 500 lines.
 - **A comment says why, in one or two plain lines.** Never what the code does, never history.
 
 ## Commits and pull requests
